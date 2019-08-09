@@ -78,7 +78,7 @@ public class MainFragment extends Fragment {
         return view;
     }
 
-    private void setRestoredData(Bundle savedInstanceState){
+    private void setRestoredData(Bundle savedInstanceState) {
         cityText.setText(savedInstanceState.getString(Constants.KEY_CITY));
         tempText.setText(savedInstanceState.getString(Constants.KEY_TEMP));
         if (savedInstanceState.getInt(Constants.KEY_IMAGE_ID) != 0) {

@@ -1,4 +1,4 @@
-package adapters;
+package ru.goodibunakov.prodvtest.adapters;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -47,11 +47,6 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
         } else {
             return items.size();
         }
-    }
-
-    public void update(List<CityModel> items) {
-        this.items = items;
-        notifyDataSetChanged();
     }
 
     class CityViewHolder extends RecyclerView.ViewHolder {

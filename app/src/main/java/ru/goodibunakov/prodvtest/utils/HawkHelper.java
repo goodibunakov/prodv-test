@@ -28,18 +28,6 @@ public class HawkHelper {
         return Hawk.put(key, obj);
     }
 
-    public boolean deleteItem(String key) {
-        return Hawk.delete(key);
-    }
-
-    public long checkItemsCount() {
-        return Hawk.count();
-    }
-
-    public boolean deleteAllItems() {
-        return Hawk.deleteAll();
-    }
-
     public boolean checkIfContain(String key) {
         return Hawk.contains(key);
     }

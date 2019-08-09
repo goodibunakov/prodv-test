@@ -25,7 +25,6 @@ public class DateUtils {
         } else {
             return "";
         }
-
     }
 
     public static String convertDate(String dateIn){
@@ -42,6 +41,5 @@ public class DateUtils {
         } else {
             return "";
         }
-
     }
 }

@@ -14,11 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import adapters.CityAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import ru.goodibunakov.prodvtest.R;
+import ru.goodibunakov.prodvtest.adapters.CityAdapter;
 import ru.goodibunakov.prodvtest.utils.HawkHelper;
 
 public class ChoseCityFragment extends Fragment {
