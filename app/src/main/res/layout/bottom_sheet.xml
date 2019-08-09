@@ -5,7 +5,7 @@
     android:id="@+id/bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorBackgroundSheet"
+    android:background="@drawable/bg_bottom_sheet"
     android:orientation="vertical"
     app:behavior_hideable="false"
     app:behavior_peekHeight="56dp"
@@ -15,10 +15,10 @@
         android:id="@+id/sheet_title"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/colorPrimaryDark"
         android:gravity="center_vertical"
         android:paddingStart="8dp"
         android:paddingBottom="4dp"
+        android:background="@drawable/bg_bottom_sheet_title"
         android:text="@string/forecast"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@android:color/white"
@@ -31,6 +31,7 @@
         android:layout_height="40dp"
         android:layout_margin="8dp"
         android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@android:color/white"
         tools:text="15 октября" />
 
@@ -45,6 +46,7 @@
         android:layout_height="40dp"
         android:layout_margin="8dp"
         android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@android:color/white"
         tools:text="15 октября" />
 
@@ -59,6 +61,7 @@
         android:layout_height="40dp"
         android:layout_margin="8dp"
         android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@android:color/white"
         tools:text="15 октября" />
 
@@ -73,6 +76,7 @@
         android:layout_height="40dp"
         android:layout_margin="8dp"
         android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@android:color/white"
         tools:text="15 октября" />
 
@@ -87,6 +91,7 @@
         android:layout_height="40dp"
         android:layout_margin="8dp"
         android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@android:color/white"
         tools:text="15 октября" />
 

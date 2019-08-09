@@ -37,8 +37,12 @@ public class MainActivity extends AppCompatActivity {
         initHawk();
 
         setSupportActionBar(toolbar);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_fragment_container, new MainFragment(), "main")
+                .commit();
+
         getSupportFragmentManager().addOnBackStackChangedListener(() -> {
-            if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+            if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
                 Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
                 toolbar.setTitle(R.string.choose_city);
                 toolbar.setNavigationOnClickListener(v -> {
@@ -50,11 +54,6 @@ public class MainActivity extends AppCompatActivity {
                 Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
             }
         });
-
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_fragment_container, new MainFragment(), "main")
-                .addToBackStack(null)
-                .commit();
     }
 
     private void initHawk() {

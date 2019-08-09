@@ -3,7 +3,7 @@
     <string name="download_error">Не удалось загрузить прогноз</string>
     <string name="choose_city">Выберите город</string>
     <string name="forecast">Прогноз</string>
-    <string name="sheet_line">%1$s, %2$s °C, %3$s, %4$s мм.рт.ст.</string>
+    <string name="sheet_line">%1$s, %2$s °C, %3$s м/с, %4$s мм.рт.ст.</string>
     <string name="gradus">%1$s °C</string>
     <!--29 сентярбря, 15*С, с/в, 700 мм.рт.ст.-->
 

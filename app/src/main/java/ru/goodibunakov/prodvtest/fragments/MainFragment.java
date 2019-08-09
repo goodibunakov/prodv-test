@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -22,8 +23,10 @@ import butterknife.Unbinder;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import ru.goodibunakov.prodvtest.Constants;
 import ru.goodibunakov.prodvtest.MainActivity;
 import ru.goodibunakov.prodvtest.R;
+import ru.goodibunakov.prodvtest.model.List;
 import ru.goodibunakov.prodvtest.model.WeatherForecastModel;
 import ru.goodibunakov.prodvtest.model.WeatherModel;
 import ru.goodibunakov.prodvtest.utils.DateUtils;
@@ -34,6 +37,8 @@ public class MainFragment extends Fragment {
 
     private Unbinder unbinder;
     private String city;
+    private int imageId;
+    private String[] forecastTexts = new String[5];
 
     @BindView(R.id.progressbar)
     ProgressBar progressBar;
@@ -64,9 +69,30 @@ public class MainFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         unbinder = ButterKnife.bind(this, view);
 
-        updateScreen();
+        if (savedInstanceState == null) {
+            updateScreen();
+        } else {
+            setRestoredData(savedInstanceState);
+        }
 
         return view;
+    }
+
+    private void setRestoredData(Bundle savedInstanceState){
+        cityText.setText(savedInstanceState.getString(Constants.KEY_CITY));
+        tempText.setText(savedInstanceState.getString(Constants.KEY_TEMP));
+        if (savedInstanceState.getInt(Constants.KEY_IMAGE_ID) != 0) {
+            image.setImageResource(savedInstanceState.getInt(Constants.KEY_IMAGE_ID));
+        }
+
+        forecastTexts = savedInstanceState.getStringArray(Constants.KEY_FORECAST_ARRAY);
+        if (forecastTexts != null && forecastTexts.length == 5) {
+            sheetText1.setText(forecastTexts[0]);
+            sheetText2.setText(forecastTexts[1]);
+            sheetText3.setText(forecastTexts[2]);
+            sheetText4.setText(forecastTexts[3]);
+            sheetText5.setText(forecastTexts[4]);
+        }
     }
 
     public void updateScreen() {
@@ -89,7 +115,8 @@ public class MainFragment extends Fragment {
                         Log.d("debug", "WeatherModel = " + data.toString());
                         cityText.setText(TranslateUtils.fromEngToRu(data.getName()));
                         tempText.setText(getString(R.string.gradus, String.format(Locale.getDefault(), "%.1f", data.getMain().getTemp())));
-                        image.setImageResource(ImageUtils.getImageDrawable(data.getWeather().get(0).getDescription()));
+                        imageId = ImageUtils.getImageDrawable(data.getWeather().get(0).getDescription());
+                        image.setImageResource(imageId);
                     }
                 }
             }
@@ -113,8 +140,7 @@ public class MainFragment extends Fragment {
                 Log.d("debug", "response.body() = " + response.body());
                 if (response.isSuccessful()) {
                     if (data != null) {
-//                        https://api.openweathermap.org/data/2.5/forecast?q=Prague&appid=b849169e8518a852747d3feae7403e88&units=metric&lang=ru
-                        sheetText1.setText(DateUtils.convertDateForUI(data.getList().get(0).getDtTxt()));
+                        fillSheet(data);
                     }
                 }
             }
@@ -127,9 +153,71 @@ public class MainFragment extends Fragment {
         });
     }
 
+    private void fillSheet(WeatherForecastModel data) {
+        // https://api.openweathermap.org/data/2.5/forecast?q=Prague&appid=b849169e8518a852747d3feae7403e88&units=metric&lang=ru
+        ArrayList<List> list_ = data.getList();
+        ArrayList<String> dates = new ArrayList<>();
+        for (List list : list_) {
+            String date = DateUtils.convertDate(list.getDtTxt());
+            if (!dates.contains(date)) {
+                dates.add(date);
+            }
+        }
+
+        if (dates.size() > 0) {
+            for (int i = 0; i < dates.size(); i++) {
+                ArrayList<List> forecast = new ArrayList<>();
+                String date = dates.get(i);
+                for (List list : list_) {
+                    if (list.getDtTxt().contains(date)) {
+                        forecast.add(list);
+                    }
+                }
+
+                double avgTemp = 0;
+                double avgWind = 0;
+                double avgPressure = 0;
+
+                for (List list : forecast) {
+                    avgTemp = avgTemp + list.getMain().getTemp();
+                    avgWind = avgWind + list.getWind().getSpeed();
+                    avgPressure = avgPressure + list.getMain().getPressure();
+                }
+
+                avgTemp = avgTemp / forecast.size();
+                avgWind = avgWind / forecast.size();
+                avgPressure = avgPressure / forecast.size() / 1.333;
+                String dateSheet = DateUtils.convertDateForUI(forecast.get(0).getDtTxt());
+
+                if (i <= 4) {
+                    forecastTexts[i] = getString(R.string.sheet_line, dateSheet,
+                            String.format(Locale.getDefault(), "%.1f", avgTemp),
+                            String.format(Locale.getDefault(), "%.1f", avgWind),
+                            String.format(Locale.getDefault(), "%.1f", avgPressure)
+                    );
+                }
+            }
+        }
+
+        sheetText1.setText(forecastTexts[0]);
+        sheetText2.setText(forecastTexts[1]);
+        sheetText3.setText(forecastTexts[2]);
+        sheetText4.setText(forecastTexts[3]);
+        sheetText5.setText(forecastTexts[4]);
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(Constants.KEY_CITY, cityText.getText().toString());
+        outState.putString(Constants.KEY_TEMP, tempText.getText().toString());
+        outState.putInt(Constants.KEY_IMAGE_ID, imageId);
+        outState.putStringArray(Constants.KEY_FORECAST_ARRAY, forecastTexts);
     }
 }

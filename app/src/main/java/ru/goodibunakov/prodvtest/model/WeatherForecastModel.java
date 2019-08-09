@@ -3,6 +3,8 @@ package ru.goodibunakov.prodvtest.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 public class WeatherForecastModel {
 
     @SerializedName("cod")
@@ -16,7 +18,7 @@ public class WeatherForecastModel {
     private Integer cnt;
     @SerializedName("list")
     @Expose
-    private java.util.List<ru.goodibunakov.prodvtest.model.List> list = null;
+    private ArrayList<List> list = null;
     @SerializedName("city")
     @Expose
     private City city;
@@ -45,11 +47,11 @@ public class WeatherForecastModel {
         this.cnt = cnt;
     }
 
-    public java.util.List<ru.goodibunakov.prodvtest.model.List> getList() {
+    public ArrayList<ru.goodibunakov.prodvtest.model.List> getList() {
         return list;
     }
 
-    public void setList(java.util.List<ru.goodibunakov.prodvtest.model.List> list) {
+    public void setList(ArrayList<ru.goodibunakov.prodvtest.model.List> list) {
         this.list = list;
     }
 
