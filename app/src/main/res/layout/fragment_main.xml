@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MainFragment">
+    tools:context=".view.fragments.MainFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,7 +12,7 @@
         android:layout_marginTop="20dp">
 
         <TextView
-            android:id="@+id/city"
+            android:id="@+id/cityText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
@@ -20,7 +20,7 @@
             tools:text="Москва" />
 
         <TextView
-            android:id="@+id/temp"
+            android:id="@+id/tempText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -28,7 +28,7 @@
             tools:text="18^C" />
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -37,7 +37,7 @@
     </LinearLayout>
 
     <ProgressBar
-        android:id="@+id/progressbar"
+        android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
