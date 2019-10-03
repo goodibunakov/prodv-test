@@ -1,27 +1,22 @@
-package ru.goodibunakov.prodvtest.view
+package ru.goodibunakov.prodvtest.presentation.view.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
+import moxy.MvpAppCompatActivity
 import ru.goodibunakov.prodvtest.R
-import ru.goodibunakov.prodvtest.api.ApiService
-import ru.goodibunakov.prodvtest.view.fragments.ChoseCityFragment
-import ru.goodibunakov.prodvtest.view.fragments.MainFragment
-import ru.goodibunakov.prodvtest.model.CityModel
+import ru.goodibunakov.prodvtest.presentation.model.CityModel
+import ru.goodibunakov.prodvtest.presentation.view.fragments.ChoseCityFragment
+import ru.goodibunakov.prodvtest.presentation.view.fragments.MainFragment
 import ru.goodibunakov.prodvtest.utils.HawkHelper
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
-
-    lateinit var apiService: ApiService
+class MainActivity : MvpAppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        apiService = ApiService.create()
         initHawk()
 
         setSupportActionBar(toolbar)
@@ -45,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initHawk() {
-        val hawkHelper = HawkHelper.getInstance()
+        val hawkHelper = HawkHelper
         hawkHelper.init(applicationContext)
         if (!hawkHelper.checkIfContain(HawkHelper.ITEMS)) {
             val items = ArrayList<CityModel>()

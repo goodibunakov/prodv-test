@@ -1,4 +1,4 @@
-package ru.goodibunakov.prodvtest
+package ru.goodibunakov.prodvtest.utils
 
 class Constants {
 

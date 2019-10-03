@@ -31,7 +31,7 @@ object TranslateUtils {
 
     fun fromRuToEng(): String {
         var city = ""
-        val items = HawkHelper.getInstance().getItem(HawkHelper.ITEMS)
+        val items = HawkHelper.getItem(HawkHelper.ITEMS)
         for (cityModel in items!!) {
             if (cityModel.isSelected) {
                 city = CITIES[cityModel.city]!!

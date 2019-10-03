@@ -1,14 +1,14 @@
-package ru.goodibunakov.prodvtest.adapters
+package ru.goodibunakov.prodvtest.presentation.view.adapters
 
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Switch
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.item_city.view.*
 import ru.goodibunakov.prodvtest.R
-import ru.goodibunakov.prodvtest.model.CityModel
+import ru.goodibunakov.prodvtest.presentation.model.CityModel
 import ru.goodibunakov.prodvtest.utils.HawkHelper
 
 internal class CityAdapter(private val items: List<CityModel>?) : RecyclerView.Adapter<CityAdapter.CityViewHolder>() {
@@ -30,13 +30,10 @@ internal class CityAdapter(private val items: List<CityModel>?) : RecyclerView.A
 
     internal inner class CityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private val cityText  = itemView.findViewById<TextView>(R.id.city_text)
-        private val switchItem  = itemView.findViewById<Switch>(R.id.switch_item)
-
         fun bind(item: CityModel) {
-            cityText.text = item.city
-            switchItem.isChecked = item.isSelected
-            switchItem.setOnClickListener {
+            itemView.city_text.text = item.city
+            itemView.switch_item.isChecked = item.isSelected
+            itemView.switch_item.setOnClickListener {
                 val switchClicked = it as Switch
                 if (!switchClicked.isChecked) switchClicked.isChecked = true
                 val position = adapterPosition
@@ -44,8 +41,10 @@ internal class CityAdapter(private val items: List<CityModel>?) : RecyclerView.A
                     val cityModel = items[i]
                     cityModel.isSelected = i == position
                 }
-                HawkHelper.getInstance().setItem(HawkHelper.ITEMS, items)
-                Handler().post { this@CityAdapter.notifyDataSetChanged() }
+                HawkHelper.setItem(HawkHelper.ITEMS, items)
+                Handler().post {
+                    this@CityAdapter.notifyDataSetChanged()
+                }
             }
         }
     }

@@ -2,9 +2,11 @@ package ru.goodibunakov.prodvtest.utils
 
 import android.content.Context
 import com.orhanobut.hawk.Hawk
-import ru.goodibunakov.prodvtest.model.CityModel
+import ru.goodibunakov.prodvtest.presentation.model.CityModel
 
-class HawkHelper {
+object HawkHelper {
+
+    const val ITEMS = "items"
 
     fun init(context: Context) {
         Hawk.init(context).build()
@@ -20,16 +22,5 @@ class HawkHelper {
 
     fun checkIfContain(key: String): Boolean {
         return Hawk.contains(key)
-    }
-
-    companion object {
-
-        const val ITEMS = "items"
-
-        private val instance: HawkHelper? = null
-
-        fun getInstance(): HawkHelper {
-            return instance ?: HawkHelper()
-        }
     }
 }
