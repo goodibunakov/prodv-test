@@ -5,9 +5,9 @@ import moxy.InjectViewState
 import moxy.MvpPresenter
 import ru.goodibunakov.prodvtest.domain.Mapper
 import ru.goodibunakov.prodvtest.domain.Repository
-import ru.goodibunakov.prodvtest.presentation.model.WeatherForecastModel
-import ru.goodibunakov.prodvtest.presentation.view.MainFragmentView
+import ru.goodibunakov.prodvtest.presentation.view.fragments.main.MainFragmentView
 import ru.goodibunakov.prodvtest.utils.TranslateUtils
+import ru.goodibunakov.prodvtest.web.dto.WeatherForecastModel
 
 @InjectViewState
 class MainFragmentPresenter() : MvpPresenter<MainFragmentView>() {

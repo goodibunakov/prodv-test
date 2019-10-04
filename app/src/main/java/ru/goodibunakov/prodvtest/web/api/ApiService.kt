@@ -1,4 +1,4 @@
-package ru.goodibunakov.prodvtest.api
+package ru.goodibunakov.prodvtest.web.api
 
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
@@ -8,8 +8,8 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
-import ru.goodibunakov.prodvtest.presentation.model.WeatherForecastModel
-import ru.goodibunakov.prodvtest.presentation.model.WeatherModel
+import ru.goodibunakov.prodvtest.web.dto.WeatherForecastModel
+import ru.goodibunakov.prodvtest.web.dto.WeatherModel
 import ru.goodibunakov.prodvtest.utils.Constants
 
 interface ApiService {

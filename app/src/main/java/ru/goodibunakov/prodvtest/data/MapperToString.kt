@@ -3,8 +3,8 @@ package ru.goodibunakov.prodvtest.data
 import android.content.Context
 import ru.goodibunakov.prodvtest.R
 import ru.goodibunakov.prodvtest.domain.Mapper
-import ru.goodibunakov.prodvtest.presentation.model.List
-import ru.goodibunakov.prodvtest.presentation.model.WeatherForecastModel
+import ru.goodibunakov.prodvtest.web.dto.List
+import ru.goodibunakov.prodvtest.web.dto.WeatherForecastModel
 import ru.goodibunakov.prodvtest.utils.DateUtils
 import java.util.*
 

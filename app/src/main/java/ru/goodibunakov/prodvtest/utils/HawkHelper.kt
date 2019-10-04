@@ -2,7 +2,7 @@ package ru.goodibunakov.prodvtest.utils
 
 import android.content.Context
 import com.orhanobut.hawk.Hawk
-import ru.goodibunakov.prodvtest.presentation.model.CityModel
+import ru.goodibunakov.prodvtest.web.dto.CityModel
 
 object HawkHelper {
 

@@ -1,10 +1,10 @@
 package ru.goodibunakov.prodvtest.data
 
 import io.reactivex.Observable
-import ru.goodibunakov.prodvtest.api.ApiService
 import ru.goodibunakov.prodvtest.domain.Repository
-import ru.goodibunakov.prodvtest.presentation.model.WeatherForecastModel
-import ru.goodibunakov.prodvtest.presentation.model.WeatherModel
+import ru.goodibunakov.prodvtest.web.api.ApiService
+import ru.goodibunakov.prodvtest.web.dto.WeatherForecastModel
+import ru.goodibunakov.prodvtest.web.dto.WeatherModel
 
 class Repository(private val apiService: ApiService) : Repository {
 

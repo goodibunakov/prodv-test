@@ -1,4 +1,4 @@
-package ru.goodibunakov.prodvtest.presentation.view.fragments
+package ru.goodibunakov.prodvtest.presentation.view.fragments.main
 
 import android.os.Bundle
 import android.util.Log
@@ -14,12 +14,11 @@ import moxy.presenter.ProvidePresenter
 import ru.goodibunakov.prodvtest.R
 import ru.goodibunakov.prodvtest.data.MapperToString
 import ru.goodibunakov.prodvtest.presentation.MyApp
-import ru.goodibunakov.prodvtest.presentation.model.WeatherModel
 import ru.goodibunakov.prodvtest.presentation.presenter.MainFragmentPresenter
-import ru.goodibunakov.prodvtest.presentation.view.MainFragmentView
 import ru.goodibunakov.prodvtest.utils.Constants
 import ru.goodibunakov.prodvtest.utils.ImageUtils
 import ru.goodibunakov.prodvtest.utils.TranslateUtils
+import ru.goodibunakov.prodvtest.web.dto.WeatherModel
 import java.util.*
 
 class MainFragment : MvpAppCompatFragment(R.layout.fragment_main), MainFragmentView {

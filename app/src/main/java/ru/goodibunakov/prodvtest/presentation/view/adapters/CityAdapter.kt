@@ -8,7 +8,7 @@ import android.widget.Switch
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_city.view.*
 import ru.goodibunakov.prodvtest.R
-import ru.goodibunakov.prodvtest.presentation.model.CityModel
+import ru.goodibunakov.prodvtest.web.dto.CityModel
 import ru.goodibunakov.prodvtest.utils.HawkHelper
 
 internal class CityAdapter(private val items: List<CityModel>?) : RecyclerView.Adapter<CityAdapter.CityViewHolder>() {

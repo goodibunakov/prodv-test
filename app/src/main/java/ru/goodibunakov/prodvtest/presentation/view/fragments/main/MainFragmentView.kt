@@ -1,9 +1,9 @@
-package ru.goodibunakov.prodvtest.presentation.view
+package ru.goodibunakov.prodvtest.presentation.view.fragments.main
 
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndStrategy
 import moxy.viewstate.strategy.StateStrategyType
-import ru.goodibunakov.prodvtest.presentation.model.WeatherModel
+import ru.goodibunakov.prodvtest.web.dto.WeatherModel
 
 @StateStrategyType(value = AddToEndStrategy::class)
 interface MainFragmentView: MvpView {

@@ -1,4 +1,4 @@
-package ru.goodibunakov.prodvtest.presentation.view.fragments
+package ru.goodibunakov.prodvtest.presentation.view.fragments.choose
 
 import android.os.Bundle
 import android.view.View

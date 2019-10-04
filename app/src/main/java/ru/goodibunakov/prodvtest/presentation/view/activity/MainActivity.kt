@@ -6,9 +6,9 @@ import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import moxy.MvpAppCompatActivity
 import ru.goodibunakov.prodvtest.R
-import ru.goodibunakov.prodvtest.presentation.model.CityModel
-import ru.goodibunakov.prodvtest.presentation.view.fragments.ChoseCityFragment
-import ru.goodibunakov.prodvtest.presentation.view.fragments.MainFragment
+import ru.goodibunakov.prodvtest.web.dto.CityModel
+import ru.goodibunakov.prodvtest.presentation.view.fragments.choose.ChoseCityFragment
+import ru.goodibunakov.prodvtest.presentation.view.fragments.main.MainFragment
 import ru.goodibunakov.prodvtest.utils.HawkHelper
 import java.util.*
 
