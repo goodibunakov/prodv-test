@@ -15,5 +15,4 @@ class Repository(private val apiService: ApiService) : Repository {
     override fun getForecast(city: String): Observable<WeatherForecastModel> {
         return apiService.getForecast(city)
     }
-
 }

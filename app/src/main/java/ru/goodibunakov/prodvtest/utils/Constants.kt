@@ -1,8 +1,8 @@
 package ru.goodibunakov.prodvtest.utils
 
-class Constants {
+object Constants {
 
-    companion object {
+//    companion object {
 
         const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
 
@@ -12,5 +12,5 @@ class Constants {
         const val KEY_CITY = "city"
         const val KEY_IMAGE_ID = "imgId"
         const val KEY_FORECAST_ARRAY = "forecast"
-    }
+//    }
 }

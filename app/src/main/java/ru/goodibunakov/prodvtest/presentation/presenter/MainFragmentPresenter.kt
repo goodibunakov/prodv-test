@@ -1,5 +1,6 @@
 package ru.goodibunakov.prodvtest.presentation.presenter
 
+import android.annotation.SuppressLint
 import io.reactivex.Scheduler
 import moxy.InjectViewState
 import moxy.MvpPresenter
@@ -36,6 +37,7 @@ class MainFragmentPresenter() : MvpPresenter<MainFragmentView>() {
         getForecastWeather(cityName)
     }
 
+    @SuppressLint("CheckResult")
     private fun getTodayWeather(cityName: String) {
         viewState.showProgressBar()
         repository.getToday(cityName)
@@ -52,6 +54,7 @@ class MainFragmentPresenter() : MvpPresenter<MainFragmentView>() {
                 })
     }
 
+    @SuppressLint("CheckResult")
     private fun getForecastWeather(cityName: String) {
         viewState.showProgressBar()
         repository.getForecast(cityName)
